@@ -1,0 +1,34 @@
+# Build
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code
+.vscode/
+
+# Visual Studio
+.vs/
+*.vspx
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*_h.h
+*.ncb
+*.aps
+*.sdf
+*.cache
+*.dbmdl
+*.bak
+*.log
+
+# Others
+TestResults/
+*.DotSettings.user
+.idea/
+*.sln.iml
