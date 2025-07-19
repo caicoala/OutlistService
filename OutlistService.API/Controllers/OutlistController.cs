@@ -19,8 +19,19 @@ namespace OutlistService.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] OutlistProduct product)
         {
-            await _service.AddAsync(product);
-            return Ok();
+            try
+            {
+                await _service.AddAsync(product);
+                return CreatedAtAction(nameof(Get), new { code = product.ProductCode }, product);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Conflict(new { error = ex.Message });
+            }
         }
 
         [HttpDelete("{code}")]
@@ -33,8 +44,19 @@ namespace OutlistService.API.Controllers
         [HttpPut("{code}/validity")]
         public async Task<IActionResult> UpdateValidity(string code, [FromBody] ValidityDto dto)
         {
-            await _service.UpdateValidityAsync(code, dto.ValidFrom, dto.ValidTo);
-            return Ok();
+            try
+            {
+                await _service.UpdateValidityAsync(code, dto.ValidFrom, dto.ValidTo);
+                return NoContent();
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { error = ex.Message });
+            }
         }
 
         [HttpGet]
