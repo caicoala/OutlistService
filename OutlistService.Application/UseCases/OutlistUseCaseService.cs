@@ -8,10 +8,7 @@ namespace OutlistService.Application.UseCases
     {
         private readonly IOutlistRepository _repository;
 
-        public OutlistUseCaseService(IOutlistRepository repository)
-        {
-            _repository = repository;
-        }
+        public OutlistUseCaseService(IOutlistRepository repository) => _repository = repository;
 
         public async Task AddAsync(OutlistProduct product)
         {
@@ -33,10 +30,7 @@ namespace OutlistService.Application.UseCases
             if (to < from)
                 throw new ArgumentException("Data final não pode ser menor que a inicial.");
 
-            var existing = await _repository.GetByProductCodeAsync(code);
-            if (existing is null)
-                throw new KeyNotFoundException($"Produto com código '{code}' não encontrado.");
-
+            var existing = await _repository.GetByProductCodeAsync(code) ?? throw new KeyNotFoundException($"Produto com código '{code}' não encontrado.");
             await _repository.UpdateValidityAsync(code, from, to);
         }
 
