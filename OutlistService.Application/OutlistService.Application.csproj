@@ -10,8 +10,4 @@
     <ProjectReference Include="..\OutlistService.Domain\OutlistService.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UseCases\" />
-  </ItemGroup>
-
 </Project>
