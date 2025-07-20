@@ -1,3 +1,4 @@
+
 # OutlistService.API
 
 API RESTful desenvolvida em .NET 7 para gerenciamento de produtos do tipo Outlist (fora de linha).  
@@ -91,6 +92,29 @@ Arquivo `appsettings.json` define os parâmetros do MongoDB:
 - A estrutura atual visa flexibilidade e escalabilidade para adicionar novos recursos de forma fluida.
 - Swagger está embutido desde o início para facilitar a validação e consumo da API.
 
-## 🙋 Sobre o Autor
+## 📌 Considerações sobre o Desafio
 
-Desenvolvido por **Caíque Ferraz**.  
+Abaixo estão minhas decisões e alinhamentos com os pontos propostos:
+
+- ✅ **Testes automatizados**: implementei testes de unidade com xUnit e Moq, além de testes de comportamento (BDD) no estilo *Given-When-Then*, cobrindo os principais fluxos do sistema.
+- ✅ **Uso de BDD**: segui o modelo proposto com arquivos separados de teste focando em clareza de comportamento, como sugerido.
+- ✅ **Clean Architecture**: toda a estrutura do projeto foi pensada em camadas bem definidas, com separação entre domínio, aplicação, infraestrutura e API, facilitando manutenção e testes.
+- ✅ **Arquitetura RESTful**: os endpoints seguem o modelo REST, com uso de verbos HTTP adequados e URIs bem definidas.
+- ✅ **Uso de containers**: foi incluído um `docker-compose.yml` para facilitar a execução do MongoDB localmente. A API também pode ser facilmente containerizada, se necessário.
+- ✅ **Swagger**: a documentação da API está disponível via Swagger UI, com suporte a autenticação JWT para facilitar a visualização e testes.
+
+### ❓ O que faria para não expor uma API?
+
+- Utilizaria **autenticação e autorização robustas**, como JWT + roles.
+- Criaria um **API Gateway** com controle de rotas públicas e privadas.
+- Utilizaria regras de **firewall e redes privadas**, limitando o acesso por IP/ambiente.
+- Aplicaria políticas de **rate limiting** e CORS estritos.
+
+### ❓ O que faria para não quebrar um contrato que já esteja sendo utilizado por outra aplicação?
+
+- Usaria **versionamento de API** (ex: `v1`, `v2`), como já demonstrado neste projeto.
+- Manteria endpoints antigos até garantir migração completa dos consumidores.
+- Adotaria a prática de **contract-first** com ferramentas como Swagger/OpenAPI.
+- Aplicaria **testes de contrato (Consumer-Driven Contracts)** usando ferramentas como Pact.
+
+Desenvolvido por **Caíque Ferraz**.
