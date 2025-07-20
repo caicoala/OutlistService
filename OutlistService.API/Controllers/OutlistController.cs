@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OutlistService.API.DTOs;
 using OutlistService.Application.UseCases;
@@ -16,6 +17,7 @@ namespace OutlistService.API.Controllers
             _service = service;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] OutlistProduct product)
         {
@@ -34,6 +36,7 @@ namespace OutlistService.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("{code}")]
         public async Task<IActionResult> Delete(string code)
         {
@@ -41,6 +44,7 @@ namespace OutlistService.API.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpPut("{code}/validity")]
         public async Task<IActionResult> UpdateValidity(string code, [FromBody] ValidityDto dto)
         {
@@ -59,6 +63,7 @@ namespace OutlistService.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetPaged([FromQuery] int page = 1, [FromQuery] int size = 100)
         {
@@ -67,6 +72,7 @@ namespace OutlistService.API.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpGet("{code}")]
         public async Task<IActionResult> Get(string code)
         {
