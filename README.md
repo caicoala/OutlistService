@@ -117,4 +117,16 @@ Abaixo estão minhas decisões e alinhamentos com os pontos propostos:
 - Adotaria a prática de **contract-first** com ferramentas como Swagger/OpenAPI.
 - Aplicaria **testes de contrato (Consumer-Driven Contracts)** usando ferramentas como Pact.
 
+## 📬 Testes com Postman
+
+Uma collection do Postman está incluída no projeto para facilitar a validação da API.
+
+📂 Arquivo: `OutlistService_Postman_Collection.json`  
+📥 Para importar no Postman:  
+1. Abra o Postman  
+2. Clique em **Import > File**  
+3. Selecione o arquivo acima  
+4. Configure a variável `{{baseURL}}` como `https://localhost:44388`
+
+
 Desenvolvido por **Caíque Ferraz**.
