@@ -5,10 +5,11 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace OutlistService.Controllers
+namespace OutlistService.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly IConfiguration _configuration;
@@ -20,7 +21,7 @@ namespace OutlistService.Controllers
 
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest request)
-        {   
+        {
             if (request.Username == "admin" && request.Password == "123")
             {
                 var token = GenerateJwtToken(request.Username, "Admin");

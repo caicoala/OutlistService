@@ -7,7 +7,8 @@ using OutlistService.Domain.Entities;
 namespace OutlistService.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class OutlistController : ControllerBase
     {
         private readonly OutlistUseCaseService _service;
@@ -24,7 +25,7 @@ namespace OutlistService.API.Controllers
             try
             {
                 await _service.AddAsync(product);
-                return CreatedAtAction(nameof(Get), new { code = product.ProductCode }, product);
+                return CreatedAtAction(nameof(Get), new { code = product.ProductCode, version = "1.0" }, product);
             }
             catch (ArgumentException ex)
             {
