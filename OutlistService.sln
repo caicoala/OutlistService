@@ -13,7 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens
 	ProjectSection(SolutionItems) = preProject
 		.dockerignore = .dockerignore
 		docker-compose.yml = docker-compose.yml
-		OutlistService.API\Dockerfile = OutlistService.API\Dockerfile
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlistService.API", "OutlistService.API\OutlistService.API.csproj", "{7FF899A2-0D37-F141-A801-1435EA3EAF2E}"
